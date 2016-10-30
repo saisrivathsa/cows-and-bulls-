@@ -1,29 +1,29 @@
 from random import *
-flag=0
+flag = 0
 
 def generator():
-    random_number=randint(0123,9876)
-    f=0
-    s=str(random_number)
+    random_number = randint(0123, 9876)
+    f = 0
+    s = str(random_number)
     if random_number < 1000:
-        s='0'+s
+        s = '0' + s
 
     for i in range(4):
         for j in range (4):
-            if i!=j:
+            if i != j:
                 if s[i] == s[j]:
-                    f=1
-    if f==1 :
-        s=generator()
+                    f = 1
+    if f == 1 :
+        s = generator()
         return s
     else :
         return s
 
-def check(y,n):
+def check(y, n):
     global flag
-    cows,bulls=0,0
-    n=str(n)
-    if len(n)!=4:
+    cows,bulls = 0,0
+    n = str(n)
+    if len(n) != 4:
         print "enter only a four digit number \n"
         game()
     a=[]
@@ -32,23 +32,23 @@ def check(y,n):
 
     for i in range(4):
         for j in range (4):
-            if i!=j :
-                if a[i]==a[j]:
+            if i != j :
+                if a[i] == a[j]:
                     print "guess a number with no repeated digits\n"
                     game()
 
     for i in range(4):
         for j in range (4):
             if a[i] == y[j]:
-                if i==j:
-                    bulls=bulls+1
+                if i == j:
+                    bulls = bulls + 1
                 else :
-                    cows=cows+1
+                    cows = cows + 1
 
     print "you have got %d cows and %d bulls\n" % (cows,bulls)
 
-    if bulls==4:
-        flag=1
+    if bulls == 4:
+        flag = 1
         print "Congo you won\n"
         quit()
 def game():
@@ -57,7 +57,7 @@ def game():
     y=[]
     for i in x:
         y.append(i)
-    while flag==0:
+    while flag == 0:
         n=raw_input("Try guessing the 4 digit number:")
         try:
             int(n)
